@@ -35,7 +35,7 @@ if [ ! -f $CACHE_FILE ]; then
   ./configure --prefix=$INSTALL_DIR --without-gvc --disable-static --enable-shared --without-autotrace --without-magick-plus-plus --without-lcms
   make && make install
   cd ..
-  rm -rf $IMAGE_MAGICK_DIR
+  rm -rf "$IMAGE_MAGICK_DIR" "$BUILD_DIR/$IMAGE_MAGICK_FILE"
 
   # cache for future deploys
   echo "-----> Caching ImageMagick installation"
@@ -43,6 +43,8 @@ if [ ! -f $CACHE_FILE ]; then
   REL_INSTALL_DIR="imagemagick"
   tar czf $REL_INSTALL_DIR.tar.gz $REL_INSTALL_DIR
   mv $REL_INSTALL_DIR.tar.gz $CACHE_FILE
+
+  rm -rf "$IMAGE_MAGICK_DIR"
 
 else
   # cache exists, extract it
