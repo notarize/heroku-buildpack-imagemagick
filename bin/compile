@@ -12,7 +12,7 @@ VENDOR_DIR="$BUILD_DIR/vendor"
 INSTALL_DIR="$VENDOR_DIR/imagemagick"
 IMAGE_MAGICK_VERSION="${IMAGE_MAGICK_VERSION:-7.0.10-24}"
 CACHE_FILE="$CACHE_DIR/imagemagick-$IMAGE_MAGICK_VERSION.tar.gz"
-
+rm -rf $CACHE_FILE
 if [ ! -f $CACHE_FILE ]; then
   # install imagemagick
   IMAGE_MAGICK_FILE="ImageMagick-$IMAGE_MAGICK_VERSION.tar.xz"
